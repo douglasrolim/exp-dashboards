@@ -37,12 +37,12 @@ Após criada a cada, salve a imagem a seguir e defina como ícone da camada:
 
 Para a camada criada criar as seguintes entidades
 
-**Camada 1**
+**Entidade 1**
 - name: Obras para a Copa do Mundo
 - description: Polígono de área afetada pelas obras
 - location: Usar os dados de: https://gist.github.com/douglasrolim/64f7ae9793d130a745d7ea7accc17f5f
 
-**Entidade 2***
+**Entidade 2**
 - name: Obras de reparo da Via Costeira
 - description: Pontos da operação tapa buracos da via da Via costeira
 - location: Usar os dados de: https://gist.github.com/douglasrolim/07358c4db4bceb4fec3ef62b1a43f2b3
