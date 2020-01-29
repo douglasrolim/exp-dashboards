@@ -59,9 +59,13 @@ Para a camada criada criar as seguintes entidades
 Para a realização das tarefas, a documentação e guias oficiais do SGeoL podem ser consultados. 
 
 [SGeoL - API](http://sgeolayers.imd.ufrn.br/sgeol-test-sec/operacoes-api.xhtml)
+
 [SGeoL - API Usuários e Autenticação](http://sgeolayers.imd.ufrn.br/sgeol-test-sec/api-usuarios-autenticacao.xhtml)
+
 [SGeol - API Camadas](http://sgeolayers.imd.ufrn.br/sgeol-test-sec/api-camadas.xhtml)
+
 [SGeol - API Entidades](http://sgeolayers.imd.ufrn.br/sgeol-test-sec/api-entidades.xhtml)
+
 [Tutorial - Postman](https://documenter.getpostman.com/view/4390317/SVfKyqnb?version=latest)
 
 ### Apresentação Inicial
