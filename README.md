@@ -39,12 +39,12 @@ Após criada a cada, salve a imagem a seguir e defina como ícone da camada:
 
 Para a camada criada, adicione as seguintes entidades:
 
-**Camada 1**
+**Entidade 1**
 - name: Obras para a Copa do Mundo
 - description: Polígono de área afetada pelas obras
 - location: Usar os dados de: https://gist.github.com/douglasrolim/64f7ae9793d130a745d7ea7accc17f5f
 
-**Entidade 2***
+**Entidade 2**
 - name: Obras de reparo da Via Costeira
 - description: Pontos da operação tapa buracos da via da Via costeira
 - location: Usar os dados de: https://gist.github.com/douglasrolim/07358c4db4bceb4fec3ef62b1a43f2b3
@@ -77,9 +77,13 @@ Em seguida, deve-se analisar os dados adicionados fazendo uso do Dashboard de Vi
 Para a realização das tarefas, a documentação e guias oficiais do SGeoL podem ser consultados. 
 
 [SGeoL - API](http://sgeolayers.imd.ufrn.br/sgeol-test-sec/operacoes-api.xhtml)
+
 [SGeoL - API Usuários e Autenticação](http://sgeolayers.imd.ufrn.br/sgeol-test-sec/api-usuarios-autenticacao.xhtml)
+
 [SGeol - API Camadas](http://sgeolayers.imd.ufrn.br/sgeol-test-sec/api-camadas.xhtml)
+
 [SGeol - API Entidades](http://sgeolayers.imd.ufrn.br/sgeol-test-sec/api-entidades.xhtml)
+
 [Tutorial - Postman](https://documenter.getpostman.com/view/4390317/SVfKyqnb?version=latest)
 
 [SGeoL - Esquema de uso das APIs] 
