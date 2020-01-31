@@ -81,6 +81,16 @@ USER: gerente_app_devboard@test.com
 
 USER_PASSWORD: 1234
 
+## Body para camada 
+
+{
+    "@context" : [ "https://forge.etsi.org/gitlab/NGSI-LD/NGSI-LD/raw/master/coreContext/ngsi-ld-core-context.json", "https://github.com/JorgePereiraUFRN/SGEOL-LD/blob/master/ngsi-ld/layer/DomainLayer_Context.jsonld" ],
+    "id" : "urn:ngsi-ld:layer:p_obras_eng_natan",
+    "type" : "Layer",
+    "name": {"type": "Property","value": "Plan. de obras - Natan "},
+    "path" : {"type":"Property","value":"p_obras_eng_natan"},
+    "description" : {"type":"Property","value":"Planejamento de Obras da Prefeitura de Natal - Engenheiro Natan"}
+}
 
 Links:
 
