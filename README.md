@@ -92,6 +92,35 @@ USER_PASSWORD: 1234
     "description" : {"type":"Property","value":"Planejamento de Obras da Prefeitura de Natal - Engenheiro Natan"}
 }
 
+## Body para entidade
+
+{
+    "@context": [
+        "https://forge.etsi.org/gitlab/NGSI-LD/NGSI-LD/raw/master/coreContext/ngsi-ld-core-context.jsonld",
+        "https://github.com/JorgePereiraUFRN/SGEOL-LD/blob/master/ngsi-ld/education/school/School_Context.jsonld"
+    ],
+    "id": "urn:ngsi-ld:p_obras_eng_natan:5ad2eb2df65506e584ac5133",
+    "type": "p_obras_eng_natan",
+    "name": {
+        "type": "Property",
+        "value": "Obras para a Copa do Mundo"
+    },
+    "description": {
+        "type": "Property",
+        "value": "Obras de manutenção das áreas verdes"
+    },
+    "location": {
+        "type": "GeoProperty",
+        "value": {
+            "coordinates":  [
+          -35.24242401123047,
+          -5.833847690721354
+        ],
+            "type": "Point"
+        }
+    }
+}
+
 Links:
 
 [Link para o Dashboard de Desenvolvimento](http://sgeolayers.imd.ufrn.br/devboard/)
