@@ -32,10 +32,6 @@ Os seguintes passos devem ser executados:
 	- Exemplo: Planejamento de Obras da Prefeitura de Natal - Engenheiro Douglas
 - crea: 123456789
 
-Após criada a cada, salve a imagem a seguir e defina como ícone da camada:
-
-![Funcionalidade para criação e entidades](/img/marker-obras.png)
-
 ## Definição das entidades
 
 Para a camada criada, adicione as seguintes entidades:
