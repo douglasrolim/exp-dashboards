@@ -14,11 +14,6 @@ Observações:
 - No Sgeol, Entidades com informações geograficas devem possuir obrigatoriamente uma propriedade do tipo GeoProperty chamada *location*, cujo valor é um GeoJSON.
 - No Sgeol, tanto camadas como entidades, devem obrigatoriamente possuir um **name** (nome da camada ou entidade) e uma **description** (descrição da camada ou entidade).
 
-Links:
-
-- Devboard: Acesse o Dashboard de Visualização: http://sgeolayers.imd.ufrn.br/devboard/
-- Sgeol API - http://sgeolayers.imd.ufrn.br/sgeol-test-sec/
-
 Fluxo de chamadas da API do SGeoL:
 
 ![Fluxo de chamadas para API do Sgeol](/img/sgeol-uso-api.jpg)
@@ -70,11 +65,14 @@ Em seguida, deve-se analisar os dados adicionados fazendo uso do Dashboard de Vi
 
 ## Guias e material de apoio
 
+Links:
+
+
 [Link para o Dashboard de Desenvolvimento](http://sgeolayers.imd.ufrn.br/devboard/)
 
 [Manual do Dashboard de Desenvolvimento](https://docs.google.com/document/d/1cx7UJ0hMkUzKJ2l8DcXKeiyASrBuh_wlrdOuBIy46No/edit?usp=sharing)
 
-Para a realização das tarefas, a documentação e guias oficiais do SGeoL podem ser consultados. 
+[Link para o Dashboard de Visualização](http://sgeolayers.imd.ufrn.br/signatal/)
 
 [SGeoL - API](http://sgeolayers.imd.ufrn.br/sgeol-test-sec/operacoes-api.xhtml)
 
@@ -85,6 +83,8 @@ Para a realização das tarefas, a documentação e guias oficiais do SGeoL pode
 [SGeol - API Entidades](http://sgeolayers.imd.ufrn.br/sgeol-test-sec/api-entidades.xhtml)
 
 [Tutorial - Postman](https://documenter.getpostman.com/view/4390317/SWTBfJQ9?version=latest)
+
+[Collection do Postman com exemplos das chamadas para o SGeoL](https://github.com/douglasrolim/exp-dashboards/blob/master/examples/tutorial-sgeol.postman_collection.json)
 
 ## Formulário Final
 
