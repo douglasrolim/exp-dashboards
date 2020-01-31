@@ -14,7 +14,10 @@ Observações:
 - No Sgeol, Entidades com informações geograficas devem possuir obrigatoriamente uma propriedade do tipo GeoProperty chamada *location*, cujo valor é um GeoJSON.
 - No Sgeol, tanto camadas como entidades, devem obrigatoriamente possuir um **name** (nome da camada ou entidade) e uma **description** (descrição da camada ou entidade).
 
+Links:
 
+- Devboard: Acesse o Dashboard de Visualização: http://sgeolayers.imd.ufrn.br/devboard/
+- Sgeol API - http://sgeolayers.imd.ufrn.br/sgeol-test-sec/
 
 Fluxo de chamadas da API do SGeoL:
 
