@@ -65,6 +65,10 @@ Em seguida, deve-se analisar os dados adicionados fazendo uso do Dashboard de Vi
 
 ## Guias e material de apoio
 
+user_token: 033a1d001f45fd38efed7a0a4ef79989dd5333cc
+
+app_token: 282f2e3adef227dea5fedb0d72b63b640ce11230
+
 APP_EMAIL: app_devboard@test.com
 
 APP_PASSWORD: 1234
