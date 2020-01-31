@@ -66,11 +66,15 @@ Em seguida, deve-se analisar os dados adicionados fazendo uso do Dashboard de Vi
 ## Guias e material de apoio
 
 APP_EMAIL: app_devboard@test.com
+
 APP_PASSWORD: 1234
+
 APP_ID: 6a14d77e-ebcd-4f1a-a1ed-9240d02f17b1
+
 APP_AUTORIZATION:NmExNGQ3N2UtZWJjZC00ZjFhLWExZWQtOTI0MGQwMmYxN2IxOjVjZjZjM2ZlLTY0NWItNDgyMy04ZDQyLWE5YjI3NWUxNTRiNA==
 
 USER: gerente_app_devboard@test.com
+
 USER_PASSWORD: 1234
 
 
