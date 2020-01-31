@@ -85,14 +85,10 @@ Para a realização das tarefas, a documentação e guias oficiais do SGeoL pode
 
 [SGeol - API Entidades](http://sgeolayers.imd.ufrn.br/sgeol-test-sec/api-entidades.xhtml)
 
-[Tutorial - Postman](https://documenter.getpostman.com/view/4390317/SVfKyqnb?version=latest)
-
-### Apresentação Inicial
-
-[Link do slide](apresentação)
+[Tutorial - Postman](https://documenter.getpostman.com/view/4390317/SWTBfJQ9?version=latest)
 
 ## Formulário Final
 
 Ao final da realização das atividades, favor responder o link em anexo para finalização da participação no experimento:
 
-[Link do formulário do experimento](https://)
+[Link do formulário do experimento](https://docs.google.com/forms/d/e/1FAIpQLSeuVhewdsU04atKJAapF0MuxEYHOVY0K4ev0dh9jSOkVSxamA/viewform?usp=sf_link)
