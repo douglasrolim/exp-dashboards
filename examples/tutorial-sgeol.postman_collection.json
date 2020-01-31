@@ -1,0 +1,720 @@
+{
+	"info": {
+		"_postman_id": "5ff30a2a-24a8-41ec-b09a-e01014d3c99a",
+		"name": "Tutorial-SGEOL",
+		"description": "Esse tutorial mostra como utilizar as operações básicas do SGEOL. O intúito é mostrar rapidamente como um usuário pode utilizar a API do SGEOL para desenvolver sua aplicação.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1 - Registrar uma aplicação e uma camada",
+			"item": [
+				{
+					"name": "1.1 - registrar uma aplicação",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"app_test\",\n\t\"description\": \"description\",\n\t\"password\": \"1234\",\n\t\"email\": \"app_test@test.com\",\n\t\"applicationManager\": {\n\t\t\"username\": \"gerente_app_test\",\n\t\t\"email\": \"gerente_app_test@test.com\",\n\t\t\"password\": \"1234\"\n\t}\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/sgeol-dm/idm/apps",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sgeol-dm",
+								"idm",
+								"apps"
+							]
+						},
+						"description": "O primeiro passo para fazer uso do SGEOL é criar uma aplicação. No SGEOL todas as camadas e usuários estão vinculados a uma aplicação. Somente após criar uma aplicação o usuário poderá registrra camadas, entidades, conceder permissçoes de acesso a novos usuários, etc.\n\nUma aplicação no SGEOL precisa possuir um EMAIL e SENHA, que serão utilizado para para recuperar o token de acesso da aplicação.\nAlém disso, uma aplicação precisa de um usuário GERENTE, que será resposável por gerencia-la. Esse usuário tem permissões para criar camadas vinculadas à aplicação. Esse usuário é registrado juntamente com a aplicação.\n\nIMPORTANTE: Ao registrar uma aplicação você reberá na resposta da requisição o ID\t da aplicação e o seu Authorization-Code. Você deve se assegurar de guardar essas informações, pois so com elas será possivel recuperar os tokens dos usuários registrados na aplicação, atribuir permissões a respeito de suas camadas, etc.\n\nIMPORTANTE: Não incluir caracteres especiais no conteudo do JSON.\n\nIMPORTANTE: Altere os dados dos usuários e aplicação quando for rodar o exemplo.\n\t "
+					},
+					"response": []
+				},
+				{
+					"name": "1.2 - Recuperar um token de gerenciamento da aplicação (app-management-token)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n  \"name\":\"app2@test.com\",\n  \"password\":\"1234\"\n}"
+						},
+						"url": {
+							"raw": "http://sgeolayers.imd.ufrn.br/sgeol-dm/security/auth/login/token/management",
+							"protocol": "http",
+							"host": [
+								"sgeolayers",
+								"imd",
+								"ufrn",
+								"br"
+							],
+							"path": [
+								"sgeol-dm",
+								"security",
+								"auth",
+								"login",
+								"token",
+								"management"
+							]
+						},
+						"description": "Recuperar um token de gerenciamento da aplicação.\n\nO TOKEN DE GERENCIAMENTO é um tipo de token especial utilizado para requisições bem restritas e imporantes como: criar camadas, remover camadas, atribuir permissões a usuários, vincular usuários à aplicação, gerenciar papéis de usuários, etc."
+					},
+					"response": []
+				},
+				{
+					"name": "1.3 - Recupera o token de uma aplicação (application-token)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "app2@test.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://sgeolayers.imd.ufrn.br/sgeol-dm/security/auth/login/app",
+							"protocol": "http",
+							"host": [
+								"sgeolayers",
+								"imd",
+								"ufrn",
+								"br"
+							],
+							"path": [
+								"sgeol-dm",
+								"security",
+								"auth",
+								"login",
+								"app"
+							]
+						},
+						"description": "Recupera o token de auma aplicação (application-token)"
+					},
+					"response": []
+				},
+				{
+					"name": "1.4 - Recuperar o token de um usuário (user-token)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "ZTRlZWU4NmItZmUxMS00MDIwLWEyOGMtZjNmMDg4N2RjNmQ0Ojc2MWY1NDc3LTBlZjQtNDE4ZC1hNTQyLTQwMmRlODg3YTgxNw==",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "application-token",
+									"value": "d5919a334bf299f06135670c2fd140c0571242fa",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "gerente_app2@test.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://sgeolayers.imd.ufrn.br/sgeol-dm/security/auth/login/user",
+							"protocol": "http",
+							"host": [
+								"sgeolayers",
+								"imd",
+								"ufrn",
+								"br"
+							],
+							"path": [
+								"sgeol-dm",
+								"security",
+								"auth",
+								"login",
+								"user"
+							]
+						},
+						"description": "Recuperar o token de um usuário (user-token) vinculando a uma aplicação.\n\nObs: usar o autorization code recebido como resposta ao registrar a aplicação"
+					},
+					"response": []
+				},
+				{
+					"name": "1.5 - Registrar uma nova camada",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "application-token",
+								"type": "text",
+								"value": "<token da app>"
+							},
+							{
+								"key": "application-id",
+								"type": "text",
+								"value": "<id da app>"
+							},
+							{
+								"key": "app-management-token",
+								"type": "text",
+								"value": "<app-managmente-token>"
+							},
+							{
+								"key": "user-token",
+								"value": "<token do gerente da aplicação>",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"@context\": [\"https://forge.etsi.org/gitlab/NGSI-LD/NGSI-LD/raw/master/coreContext/ngsi-ld-core-context.json\",\n\t\t\"https://github.com/JorgePereiraUFRN/SGEOL-LD/blob/master/ngsi-ld/layer/DomainLayer_Context.jsonld\"\n\t],\n\t\"id\": \"urn:ngsi-ld:layer:aluno_test\",\n\t\"type\": \"Layer\",\n\t\"numero_total_alunos_natal\": {\n\t\t\"type\": \"Property\",\n\t\t\"value\": 60000\n\t},\n\t\"numero_alunos_ensino_medio\": {\n\t\t\"type\": \"Property\",\n\t\t\"value\": 20000\n\t},\n\t\"path\": {\n\t\t\"type\": \"Property\",\n\t\t\"value\": \"aluno_test1\"\n\t},\n\t\"description\": {\n\t\t\"type\": \"Property\",\n\t\t\"value\": \"camada que representa os alunos de natal\"\n\t},\n\t\"relationship1\": {\n\t\t\"type\": \"Relationship\",\n\t\t\"object\": \"urn:ngsi-ld:layer:escola\"\n\t}\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/sgeol-dm/v2/layer",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sgeol-dm",
+								"v2",
+								"layer"
+							]
+						},
+						"description": "IMPORTANTE: Apenas o usuário gerente da aplicação tem permissão para criar camadas vinculadas à aplicação. Uma vez criada a camada, o usuário gerente tem todas as permissões posiveis sobre ela: LEITURA, ESCRITA, REMOVER, etc.\n\nNessa operação é necessário informar o token do usuário gerente da aplicação (user token - operação 1.4)"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "2 - Gerenciar entidades",
+			"item": [
+				{
+					"name": "2.1 - Salvar Entidade",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "application-token",
+								"type": "text",
+								"value": "<application-token>"
+							},
+							{
+								"key": "user-token",
+								"type": "text",
+								"value": "<user-token>"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"@context\": [\"https://forge.etsi.org/gitlab/NGSI-LD/NGSI-LD/raw/master/coreContext/ngsi-ld-core-context.json\",\n\t\t\"https://github.com/JorgePereiraUFRN/SGEOL-LD/blob/master/ngsi-ld/education/student/Student_Context.jsonld\"\n\t],\n\t\"id\": \"urn:ngsi-ld:aluno:32a72d25-8378-4921-a318-87db41968d73\",\n\t\"type\": \"aluno_test\",\n\t\"nota_portugues\": {\n\t\t\"type\": \"Property\",\n\t\t\"value\": \"8\"\n\t},\n\t\"nota_matematica\": {\n\t\t\"type\": \"Property\",\n\t\t\"value\": \"9.5\"\n\t},\n\t\"location\": {\n\t\t\"type\": \"GeoProperty\",\n\t\t\"value\": {\n\t\t\t\"coordinates\": [\"10\", \"30\"],\n\t\t\t\"type\": \"Point\"\n\t\t}\n\t},\n\t\"escola\": {\n\t\t\"type\": \"Relationship\",\n\t\t\"object\": \"urn:ngsi-ld:escola:12345567\"\n\t}\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/sgeol-dm/v2/aluno_test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sgeol-dm",
+								"v2",
+								"aluno_test"
+							]
+						},
+						"description": "Essa operação mostra como registrar uma nova entidade de contexto. No SGEOL todas as entidades devem estar vinculadas à uma camada. O path da camada é informado na requisição HTTP, nesse exemplo a camada é \"aluno_test\"."
+					},
+					"response": []
+				},
+				{
+					"name": "2.2- atualizar entidade",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "application-token",
+								"value": "<application-token>",
+								"type": "text"
+							},
+							{
+								"key": "user-token",
+								"value": "<user-token>",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"@context\": [\"https://forge.etsi.org/gitlab/NGSI-LD/NGSI-LD/raw/master/coreContext/ngsi-ld-core-context.json\",\n\t\t\"https://github.com/JorgePereiraUFRN/SGEOL-LD/blob/master/ngsi-ld/education/student/Student_Context.jsonld\"\n\t],\n\t\"id\": \"urn:ngsi-ld:aluno:32a72d25-8378-4921-a318-87db41968d73\",\n\t\"type\": \"aluno_test\",\n\t\"nota_portugues\": {\n\t\t\"type\": \"Property\",\n\t\t\"value\": \"8\"\n\t},\n\t\"nota_matematica\": {\n\t\t\"type\": \"Property\",\n\t\t\"value\": \"9\"\n\t},\n\t\"frequencia_de_aula\": {\n\t\t\"type\": \"Property\",\n\t\t\"value\": \"95\"\n\t},\n\t\"location\": {\n\t\t\"type\": \"GeoProperty\",\n\t\t\"value\": {\n\t\t\t\"coordinates\": [\"10\", \"35\"],\n\t\t\t\"type\": \"Point\"\n\t\t}\n\t},\n\t\"escola\": {\n\t\t\"type\": \"Relationship\",\n\t\t\"object\": \"urn:ngsi-ld:escola:12345567\"\n\t}\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/sgeol-dm/v2/aluno_test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sgeol-dm",
+								"v2",
+								"aluno_test"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "3 - Gerenciar Permissões de usuários",
+			"item": [
+				{
+					"name": "3.1 - Cria um usuário",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\":\"user1_app_test\",\n\t\"email\":\"user1_app_test@test.com\",\n\t\"password\":\"1234\"\n\t}\n"
+						},
+						"url": {
+							"raw": "http://localhost:8080/sgeol-dm/idm/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sgeol-dm",
+								"idm",
+								"users"
+							]
+						},
+						"description": "Um novo usuário pode ser criado a qualquer momento no SGEOL. Quando é criado inicialmente o usuário não estará vinculado a nenhuma aplicação e não terá nenhuma permissão de acesso.\n\nA aplicação ou o gerente da aplicação devem se encarregar de associar o usuário a uma aplicação e lhe atribuir permissões de acesso após a criação do mesmo. \n\n\nIMPORTANTE: Não incluir caracteres especiais no conteudo do JSON.\n\nExemplo incorreto:\n\n{ \"user\": {\n\t\"username\":\"***cidadão***\",\n\t\"email\":\"***cidadão***@teste\",\n\t\"password\":\"password\",\n\t\"enabled\":true\n\t}\n}\n\n\nCorreto:\n\n{ \"user\": {\n\t\"username\":\"cidadao\",\n\t\"email\":\"cidadao@teste\",\n\t\"password\":\"password\",\n\t\"enabled\":true\n\t}\n}"
+					},
+					"response": []
+				},
+				{
+					"name": "3.2 - associar usuário à aplicação",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-management-token",
+								"value": "e3569aca-b4d4-463e-bb81-8c1fac7ee2db",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/sgeol-dm/idm/apps/39edac4e-bd4e-41b0-a434-e67194bb32e7/associate-user/39436f59-9ac1-4186-90d7-cab16f16b738",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sgeol-dm",
+								"idm",
+								"apps",
+								"39edac4e-bd4e-41b0-a434-e67194bb32e7",
+								"associate-user",
+								"39436f59-9ac1-4186-90d7-cab16f16b738"
+							]
+						},
+						"description": "Essa operação associa o usuário à aplicação informada. A partir do momento em que o usuário é associado à aplicação, o mesmo poderá realizar login na aplicação."
+					},
+					"response": []
+				},
+				{
+					"name": "3.3- Atribuir permissões a um usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "app-management-token",
+								"type": "text",
+								"value": "<app-management-token>"
+							},
+							{
+								"key": "user-token",
+								"type": "text",
+								"value": "<token do gerente da camada>"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"permissions\": [\"ATUALIZAR\", \"LEITURA\"],\n    \"user-id\": \"44a82dc0-0a8c-4cca-9228-c0d9dad8e772\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/sgeol-dm/idm/apps/<id da app>/aluno_test/permissions",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sgeol-dm",
+								"idm",
+								"apps",
+								"<id da app>",
+								"aluno_test",
+								"permissions"
+							]
+						},
+						"description": "Um usuário pode receber permissões de: LEITURA, ESCRITA, ATUALIZAR, REMOVER ou GERENCIAR sobre determinada camada.\n\nOBS: usar o id da aplicação registrada nos passos anteriores."
+					},
+					"response": []
+				},
+				{
+					"name": "3.4 - listar permissões de um usuario",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "app-management-token",
+								"value": "<app-management-token>",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/sgeol-dm/idm/users/<user-id>/app/<app-id>/user-permissions",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sgeol-dm",
+								"idm",
+								"users",
+								"<user-id>",
+								"app",
+								"<app-id>",
+								"user-permissions"
+							]
+						},
+						"description": "Obs: usar o id do usuário registrado na requisição anterior.\nusar o id da aplicação registrada nos passos anteriores."
+					},
+					"response": []
+				},
+				{
+					"name": "3.5 - listar usuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/sgeol-dm/idm/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sgeol-dm",
+								"idm",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3.6 - redefinir senha do usuário",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "jorgepereirasb@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "application-name",
+									"value": "test_postman",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/sgeol-dm/idm/users/redefine-password?=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sgeol-dm",
+								"idm",
+								"users",
+								"redefine-password"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": ""
+								}
+							]
+						},
+						"description": "Quando essa operação é executada a senha do usuário é alterada. Um email com a nova senha é enviado para o email do usuário."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "4 - extras",
+			"item": [
+				{
+					"name": "4.1 - deletar uma aplicação",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "application-token",
+								"value": "632681e6b00ebd1a2d2a6b1c1820d08738adc525",
+								"type": "text"
+							},
+							{
+								"key": "app-management-token",
+								"value": "f9b1a02c-92f0-41fa-999c-5d621d62e617",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/sgeol-dm/idm/apps/88e05e05-d5e3-4407-bf0a-86257e6bc63b",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sgeol-dm",
+								"idm",
+								"apps",
+								"88e05e05-d5e3-4407-bf0a-86257e6bc63b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4.2 - listar aplicações",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "app-management-token",
+								"value": "<app-mangement-tken>",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/sgeol-dm/idm/apps",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sgeol-dm",
+								"idm",
+								"apps"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4.3 - listar aplicação",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "app-management-token",
+								"value": "<app-managment-token>",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/sgeol-dm/idm/apps/<app-id>",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sgeol-dm",
+								"idm",
+								"apps",
+								"<app-id>"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4.4 - Invalidar token do usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "MjFlZmEwM2EtYWNjMS00YWE1LWI1ODAtZGI1MThkZDFkY2FkOjg3MzNjZTQzLTU0YTYtNGFiMy05N2FhLTMyNWQ3M2UwM2IwOA==",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "user-token",
+									"value": "7b5b1bac6a98d7530121dbf17d793d13c3caa76f",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/sgeol-dm/security/auth/logout",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sgeol-dm",
+								"security",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4.5 - atualizar usuario",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "user-token",
+								"value": "2154c9cde2a931ba3d7306aebe361ecd9d80c5f1",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\n\t\"username\":\"gerente_app_test\",\n\t\"email\":\"gerente_app_test@test.com\",\n\t\"password\":\"1234\"\n\t}\n"
+						},
+						"url": {
+							"raw": "http://localhost:8080/sgeol-dm/idm/users/bec3e076-f731-42fd-9d9f-2e5b4db2d059",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sgeol-dm",
+								"idm",
+								"users",
+								"bec3e076-f731-42fd-9d9f-2e5b4db2d059"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
