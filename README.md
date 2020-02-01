@@ -65,62 +65,6 @@ Em seguida, deve-se analisar os dados adicionados fazendo uso do Dashboard de Vi
 
 ## Guias e material de apoio
 
-user_token: 033a1d001f45fd38efed7a0a4ef79989dd5333cc
-
-app_token: 282f2e3adef227dea5fedb0d72b63b640ce11230
-
-APP_EMAIL: app_devboard@test.com
-
-APP_PASSWORD: 1234
-
-APP_ID: 6a14d77e-ebcd-4f1a-a1ed-9240d02f17b1
-
-APP_AUTORIZATION:NmExNGQ3N2UtZWJjZC00ZjFhLWExZWQtOTI0MGQwMmYxN2IxOjVjZjZjM2ZlLTY0NWItNDgyMy04ZDQyLWE5YjI3NWUxNTRiNA==
-
-USER: gerente_app_devboard@test.com
-
-USER_PASSWORD: 1234
-
-## Body para camada 
-
-{
-    "@context" : [ "https://forge.etsi.org/gitlab/NGSI-LD/NGSI-LD/raw/master/coreContext/ngsi-ld-core-context.json", "https://github.com/JorgePereiraUFRN/SGEOL-LD/blob/master/ngsi-ld/layer/DomainLayer_Context.jsonld" ],
-    "id" : "urn:ngsi-ld:layer:p_obras_eng_natan",
-    "type" : "Layer",
-    "name": {"type": "Property","value": "Plan. de obras - Natan "},
-    "path" : {"type":"Property","value":"p_obras_eng_natan"},
-    "description" : {"type":"Property","value":"Planejamento de Obras da Prefeitura de Natal - Engenheiro Natan"}
-}
-
-## Body para entidade
-
-{
-    "@context": [
-        "https://forge.etsi.org/gitlab/NGSI-LD/NGSI-LD/raw/master/coreContext/ngsi-ld-core-context.jsonld",
-        "https://github.com/JorgePereiraUFRN/SGEOL-LD/blob/master/ngsi-ld/education/school/School_Context.jsonld"
-    ],
-    "id": "urn:ngsi-ld:p_obras_eng_natan:5ad2eb2df65506e584ac5133",
-    "type": "p_obras_eng_natan",
-    "name": {
-        "type": "Property",
-        "value": "Obras para a Copa do Mundo"
-    },
-    "description": {
-        "type": "Property",
-        "value": "Obras de manutenção das áreas verdes"
-    },
-    "location": {
-        "type": "GeoProperty",
-        "value": {
-            "coordinates":  [
-          -35.24242401123047,
-          -5.833847690721354
-        ],
-            "type": "Point"
-        }
-    }
-}
-
 Links:
 
 [Link para o Dashboard de Desenvolvimento](http://sgeolayers.imd.ufrn.br/devboard/)
